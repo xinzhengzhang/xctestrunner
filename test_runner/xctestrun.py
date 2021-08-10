@@ -547,6 +547,10 @@ class XctestRunFactory(object):
         bundle_util.RemoveArchType(uitest_runner_exec,
                                    ios_constants.ARCH.ARM64E)
 
+    if self._device_arch == ios_constants.ARCH.X86_64:
+      bundle_util.ExtractArchType(uitest_runner_exec,
+                                   ios_constants.ARCH.X86_64)
+
     runner_app_info_plist_path = os.path.join(uitest_runner_app, 'Info.plist')
     info_plist = plist_util.Plist(runner_app_info_plist_path)
     info_plist.SetPlistField('CFBundleName', uitest_runner_app_name)
